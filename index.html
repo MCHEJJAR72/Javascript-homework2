@@ -1,0 +1,63 @@
+JavaScript Call Stack
+The call stack in JavaScript is a mechanism used to keep track of function calls in your code. Whenever you invoke a function, a new frame is created and pushed onto the top of the call stack. This frame contains information about the function's arguments, local variables, and the line of code to execute next. When a function completes, its frame is popped off the stack, and control returns to the previous function.
+
+For example, consider this code:
+
+javascript
+
+function greet(name) {
+    console.log(`Hello, ${name}!`);}
+
+function welcome() {
+    console.log('Welcome to JavaScript!');}
+
+function main() {greet('Alice'); welcome();}
+
+main();
+Here’s what happens step by step with the call stack:
+
+main() is called from the global scope.
+Inside main(), greet('Alice') is called.
+greet() is pushed onto the stack.
+console.log executes, printing "Hello, Alice!".
+greet() is popped off the stack.
+welcome() is called inside main().
+welcome() is pushed onto the stack.
+console.log executes, printing "Welcome to JavaScript!".
+welcome() is popped off the stack.
+main() completes and is popped off the stack.
+Execution returns to the global context.
+Understanding the call stack helps in debugging and understanding the flow of execution in your JavaScript code.
+
+JavaScript Promises
+Promises are a way to handle asynchronous operations in JavaScript. They represent a future value or the eventual completion of an operation, allowing you to chain operations together and handle success or failure in a more structured manner compared to callbacks.
+
+The typical structure of a promise involves three states:
+
+Pending: Initial state, neither fulfilled nor rejected.
+Fulfilled: The operation completed successfully.
+Rejected: The operation failed.
+Promises have two main methods:
+
+then(): Used to handle the result of a successful operation.
+catch(): Used to handle errors or rejections.
+Here’s an example of a promise that simulates fetching data from an API:
+
+function fetchData() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const data = { name: 'Alice', age: 30 };
+            // Simulate successful data retrieval
+            resolve(data);
+            // Simulate an error
+            // reject(new Error('Failed to fetch data')); }, 2000);= });}
+
+// Using the promise
+fetchData()
+    .then(data => {console.log('Data:', data);})
+    .catch(error => { console.error('Error:', error); });
+In this example:
+
+fetchData() returns a promise that resolves after 2 seconds.
+then() is used to handle the successful resolution and catch() is used to handle any errors that might occur.
+Promises are essential for wrgit additing cleaner asynchronous code in JavaScript, avoiding callback hell, and ensuring better error handling and control flow.
